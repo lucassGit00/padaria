@@ -1,0 +1,510 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> PANIFICADORA SÃO JOÃO | Pães e Delícias</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+body {
+    background: #fffaf2;
+    color: #382719;
+}
+header {
+    background: #783f19;
+    color: white;
+    padding: 25px 15px;
+    text-align: center;
+}
+header h1 {
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+header p {
+    color: #ffe1b7;
+}
+nav {
+    background: #542b12;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 14px;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+}
+nav a:hover {
+    color: #ffd28e;
+}
+.banner {
+    background: linear-gradient(#0005, #0005),
+    url("https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1400")
+    center/cover;
+    min-height: 290px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 25px;
+}
+.banner h2 {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+.banner p {
+    font-size: 18px;
+}
+.botao {
+    display: inline-block;
+    background: #e99a35;
+    color: #382719;
+    padding: 12px 22px;
+    margin-top: 20px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+.botao:hover {
+    background: #ffc36d;
+}
+section {
+    padding: 45px 6%;
+}
+.titulo {
+    text-align: center;
+    font-size: 29px;
+    color: #783f19;
+    margin-bottom: 12px;
+}
+.subtitulo {
+    text-align: center;
+    color: #795c43;
+    margin-bottom: 28px;
+}
+.pesquisa {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    padding: 13px;
+    margin: 0 auto 25px;
+    border: 1px solid #d9b994;
+    border-radius: 8px;
+    font-size: 16px;
+}
+.categorias {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-bottom: 25px;
+}
+.categorias button {
+    border: 1px solid #a76c39;
+    color: #783f19;
+    background: white;
+    padding: 9px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.categorias button.ativo,
+.categorias button:hover {
+    background: #783f19;
+    color: white;
+}
+.produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 20px;
+}
+.produto {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px #00000012;
+    text-align: center;
+    padding-bottom: 18px;
+    transition: transform .2s;
+}
+.produto:hover {
+    transform: translateY(-4px);
+}
+.produto .imagem {
+    background: #f5e4cd;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 65px;
+}
+.produto h3 {
+    margin: 15px 8px 8px;
+}
+.preco {
+    color: #a65316;
+    font-weight: bold;
+    font-size: 21px;
+    margin: 10px;
+}
+.produto button {
+    border: none;
+    background: #783f19;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.produto button:hover {
+    background: #a65316;
+}
+#tabela {
+    background: #f5e9d8;
+}
+table {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+th, td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #eadbc8;
+}
+th {
+    background: #783f19;
+    color: white;
+}
+tr:last-child td {
+    border-bottom: none;
+}
+td:last-child {
+    font-weight: bold;
+    color: #a65316;
+}
+#carrinho {
+    background: white;
+    border: 1px solid #eadbc8;
+    border-radius: 12px;
+    max-width: 800px;
+    margin: auto;
+    padding: 22px;
+}
+.item-carrinho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-bottom: 1px solid #eee0d0;
+    padding: 12px 0;
+}
+.item-carrinho button {
+    border: none;
+    background: #f4e4d2;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.total {
+    font-size: 23px;
+    text-align: right;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #783f19;
+}
+.info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+.info div {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #0000000d;
+}
+.info span {
+    display: block;
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+footer {
+    background: #542b12;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    line-height: 1.8;
+}
+@media(max-width: 600px) {
+    header h1 { font-size: 27px; }
+    .banner h2 { font-size: 29px; }
+    section { padding: 35px 5%; }
+    th, td { padding: 10px 8px; font-size: 14px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>🥖 PANIFICADORA SÃO JOÃO</h1>
+    <p>O sabor e a qualidade que você merece!</p>
+</header>
+
+<nav>
+    <a href="#inicio">Início</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#tabela">Preços</a>
+    <a href="#meucarrinho">Carrinho</a>
+    <a href="#contato">Contato</a>
+</nav>
+
+<div class="banner" id="inicio">
+    <h2>Seja bem-vindo!</h2>
+    <p>Pães quentinhos, bolos deliciosos e muito mais.</p>
+    <a href="#produtos" class="botao">Ver nossos produtos</a>
+</div>
+
+<section id="produtos">
+    <h2 class="titulo">🥐 Nossos Produtos</h2>
+    <p class="subtitulo">Confira nossas delícias e seus preços.</p>
+
+    <input class="pesquisa" type="text" id="pesquisa"
+    placeholder="🔎 Pesquisar produto..." oninput="mostrarProdutos()">
+
+    <div class="categorias">
+        <button class="ativo" onclick="filtrar('Todos',this)">Todos</button>
+        <button onclick="filtrar('Pães',this)">Pães</button>
+        <button onclick="filtrar('Bolos',this)">Bolos</button>
+        <button onclick="filtrar('Salgados',this)">Salgados</button>
+        <button onclick="filtrar('Biscoitos',this)">Biscoitos</button>
+        <button onclick="filtrar('Outros',this)">Outros</button>
+    </div>
+
+    <div class="produtos" id="listaProdutos"></div>
+</section>
+
+<section id="tabela">
+    <h2 class="titulo">📋 Tabela de Preços</h2>
+    <p class="subtitulo">Lista completa dos produtos da padaria.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody id="tabelaPrecos"></tbody>
+    </table>
+</section>
+
+<section id="meucarrinho">
+    <h2 class="titulo">🛒 Meu Carrinho</h2>
+    <p class="subtitulo">Confira os produtos que você selecionou.</p>
+    <div id="carrinho">
+        <div id="itensCarrinho">Seu carrinho está vazio.</div>
+        <div class="total" id="total">Total: R$ 0,00</div>
+        <button class="botao" onclick="finalizar()">Finalizar pedido</button>
+        <button class="botao" onclick="limparCarrinho()"
+        style="background:#eee">Limpar carrinho</button>
+    </div>
+</section>
+
+<section id="contato">
+    <h2 class="titulo">❤️ Sobre Nossa Padaria</h2>
+    <p class="subtitulo">Tudo preparado com carinho para você!</p>
+    <div class="info">
+        <div>
+            <span>🥖</span>
+            <h3>Qualidade</h3>
+            <p>Produtos feitos com cuidado e dedicação.</p>
+        </div>
+        <div>
+            <span>🎂</span>
+            <h3>Variedade</h3>
+            <p>Bolos, pães, salgados e muito mais.</p>
+        </div>
+        <div>
+            <span>😊</span>
+            <h3>Atendimento</h3>
+            <p>Estamos aqui para atender você!</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <h2>🥖 PANIFICADORA SÃO JOÃO</h2>
+    <p>O melhor sabor para o seu dia!</p>
+    <p>© 2026 - Todos os direitos reservados.</p>
+</footer>
+
+<script>
+const produtos = [
+    {nome:"Pão unidade", preco:0.50, quantidade:"Unidade", categoria:"Pães", emoji:"🥖"},
+    {nome:"Bolo da moça grande", preco:14, quantidade:"Unidade", categoria:"Bolos", emoji:"🎂"},
+    {nome:"Bolo da moça médio", preco:7, quantidade:"Unidade", categoria:"Bolos", emoji:"🍰"},
+    {nome:"Bolo da moça pequeno", preco:4, quantidade:"Unidade", categoria:"Bolos", emoji:"🧁"},
+    {nome:"Coxinha", preco:2, quantidade:"Unidade", categoria:"Salgados", emoji:"🥟"},
+    {nome:"Pastel", preco:2, quantidade:"Unidade", categoria:"Salgados", emoji:"🥐"},
+    {nome:"Massa folhada", preco:2, quantidade:"Unidade", categoria:"Salgados", emoji:"🥐"},
+    {nome:"Queijo", preco:52, quantidade:"Kg", categoria:"Outros", emoji:"🧀"},
+    {nome:"Fatia de bolo da moça", preco:2.50, quantidade:"Fatia", categoria:"Bolos", emoji:"🍰"},
+    {nome:"Fatia de bolo de macaxeira", preco:2.50, quantidade:"Fatia", categoria:"Bolos", emoji:"🍰"},
+    {nome:"Grude", preco:2.50, quantidade:"Unidade", categoria:"Outros", emoji:"🥮"},
+    {nome:"Cocorote", preco:5, quantidade:"Unidade", categoria:"Biscoitos", emoji:"🍪"},
+    {nome:"Bolacha seca", preco:3.50, quantidade:"Porção", categoria:"Biscoitos", emoji:"🍪"},
+    {nome:"Bolacha mole", preco:4.50, quantidade:"Porção", categoria:"Biscoitos", emoji:"🍪"},
+    {nome:"Bolacha de leite", preco:5.50, quantidade:"Porção", categoria:"Biscoitos", emoji:"🥛"}
+];
+
+let categoriaAtual = "Todos";
+let carrinho = [];
+
+function dinheiro(valor) {
+    return valor.toLocaleString("pt-BR", {
+        style:"currency", currency:"BRL"
+    });
+}
+
+function mostrarProdutos() {
+    const busca = document.getElementById("pesquisa").value.toLowerCase();
+    const lista = document.getElementById("listaProdutos");
+    lista.innerHTML = "";
+
+    const filtrados = produtos.filter(p =>
+        (categoriaAtual === "Todos" || p.categoria === categoriaAtual) &&
+        p.nome.toLowerCase().includes(busca)
+    );
+
+    filtrados.forEach(p => {
+        const indice = produtos.indexOf(p);
+        lista.innerHTML += `
+            <div class="produto">
+                <div class="imagem">${p.emoji}</div>
+                <h3>${p.nome}</h3>
+                <p>${p.quantidade}</p>
+                <div class="preco">${dinheiro(p.preco)}</div>
+                <button onclick="adicionar(${indice})">🛒 Adicionar</button>
+            </div>`;
+    });
+
+    if (filtrados.length === 0) {
+        lista.innerHTML = "<p>Nenhum produto encontrado.</p>";
+    }
+}
+
+function filtrar(categoria, botao) {
+    categoriaAtual = categoria;
+    document.querySelectorAll(".categorias button").forEach(b =>
+        b.classList.remove("ativo")
+    );
+    botao.classList.add("ativo");
+    mostrarProdutos();
+}
+
+function mostrarTabela() {
+    document.getElementById("tabelaPrecos").innerHTML =
+        produtos.map(p => `
+            <tr>
+                <td>${p.nome}</td>
+                <td>${p.quantidade}</td>
+                <td>${dinheiro(p.preco)}</td>
+            </tr>
+        `).join("");
+}
+
+function adicionar(indice) {
+    const produto = produtos[indice];
+    const item = carrinho.find(i => i.nome === produto.nome);
+    if (item) {
+        item.qtd++;
+    } else {
+        carrinho.push({...produto, qtd:1});
+    }
+    mostrarCarrinho();
+}
+
+function alterarQuantidade(indice, valor) {
+    carrinho[indice].qtd += valor;
+    if (carrinho[indice].qtd <= 0) {
+        carrinho.splice(indice, 1);
+    }
+    mostrarCarrinho();
+}
+
+function mostrarCarrinho() {
+    const area = document.getElementById("itensCarrinho");
+    if (carrinho.length === 0) {
+        area.innerHTML = "Seu carrinho está vazio.";
+    } else {
+        area.innerHTML = carrinho.map((item, i) => `
+            <div class="item-carrinho">
+                <div>
+                    <strong>${item.emoji} ${item.nome}</strong><br>
+                    ${dinheiro(item.preco)} cada
+                </div>
+                <div>
+                    <button onclick="alterarQuantidade(${i},-1)">−</button>
+                    <strong>${item.qtd}</strong>
+                    <button onclick="alterarQuantidade(${i},1)">+</button>
+                </div>
+                <strong>${dinheiro(item.preco * item.qtd)}</strong>
+            </div>
+        `).join("");
+    }
+
+    const total = carrinho.reduce((soma, item) =>
+        soma + item.preco * item.qtd, 0
+    );
+    document.getElementById("total").textContent =
+        "Total: " + dinheiro(total);
+}
+
+function limparCarrinho() {
+    carrinho = [];
+    mostrarCarrinho();
+}
+
+function finalizar() {
+    if (carrinho.length === 0) {
+        alert("Adicione algum produto ao carrinho primeiro!");
+        return;
+    }
+
+    const linhas = carrinho.map(item =>
+        `${item.qtd}x ${item.nome} - ${dinheiro(item.preco * item.qtd)}`
+    ).join("\n");
+
+    const total = carrinho.reduce((soma, item) =>
+        soma + item.preco * item.qtd, 0
+    );
+
+    alert("Resumo do pedido:\n\n" + linhas +
+          "\n\nTotal: " + dinheiro(total) +
+          "\n\nEntre em contato com a padaria para confirmar o pedido.");
+}
+
+mostrarProdutos();
+mostrarTabela();
+mostrarCarrinho();
+</script>
+</body>
+</html>
